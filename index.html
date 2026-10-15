@@ -10,7 +10,27 @@
         
         header { background: linear-gradient(135deg, #8b0000, #4a0000); color: white; text-align: center; padding: 25px 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.15); }
         header h1 { font-size: 24px; margin-bottom: 5px; font-weight: 700; }
-        header p { font-size: 14px; opacity: 0.9; }
+        header p { font-size: 14px; opacity: 0.9; margin-bottom: 12px; }
+
+        /* Alo Paket Arama Butonu Stili */
+        .alo-paket {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            transition: background 0.2s;
+            backdrop-filter: blur(5px);
+        }
+        .alo-paket:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
 
         .categories-container { position: sticky; top: 0; background: white; padding: 12px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); z-index: 100; overflow-x: auto; white-space: nowrap; display: flex; gap: 8px; }
         .categories-container::-webkit-scrollbar { display: none; }
@@ -51,6 +71,10 @@
     <header>
         <h1>Gaziantep Güneşi</h1>
         <p>Geleneksel Kebap & Pide Salonu</p>
+        <!-- Tıklayınca arama yapacak Alo Paket butonu -->
+        <a href="tel:02862132717" class="alo-paket">
+            📞 ALO PAKET: 0 (286) 213 27 17
+        </a>
     </header>
 
     <div class="categories-container" id="categories"></div>
@@ -110,7 +134,7 @@
                         let name = columns[1];
                         let desc = columns[2] || '';
                         let price = columns[3] || '';
-                        let imgUrl = columns[4] || ''; // E sütunu: Fotoğraf URL'si
+                        let imgUrl = columns[4] || '';
 
                         if (!cat || !name) continue;
 
@@ -140,7 +164,6 @@
                             formattedPrice += ' TL';
                         }
 
-                        // Fotoğraf kontrolü: Varsa resmi ekler, yoksa boş bırakır
                         let imgHtml = item.imgUrl ? `<img src="${item.imgUrl}" class="item-img" alt="${item.name}">` : '';
 
                         html += `
